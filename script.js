@@ -56,4 +56,22 @@
       observer.observe(section);
     });
   }
+
+  var flipCards = document.querySelectorAll(".flip-card");
+
+  flipCards.forEach(function (card) {
+    function toggleFlip() {
+      var flipped = card.classList.toggle("is-flipped");
+      card.setAttribute("aria-pressed", String(flipped));
+    }
+
+    card.addEventListener("click", toggleFlip);
+
+    card.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleFlip();
+      }
+    });
+  });
 })();
